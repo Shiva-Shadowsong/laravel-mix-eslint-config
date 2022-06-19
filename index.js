@@ -1,6 +1,6 @@
 let mix = require('laravel-mix')
 class Eslint {
-  dependencies () {
+  dependencies() {
     this.requiresReload = `
             Dependencies have been installed. Please run "npm run dev" again.
         `
@@ -14,7 +14,7 @@ class Eslint {
     return dependencies
   }
 
-  register (config = {}) {
+  register(config = {}) {
     this.plugins = (config && Array.isArray(config.plugins)) ? config.plugins : ['vue']
     const defaultConfig = {
       enforce: 'pre',
@@ -35,7 +35,7 @@ class Eslint {
         : config.include
 
       config.test = Array.isArray(config.test)
-        ? (Regexp(RegExp(`\\.(${config.test.join('|')})$`)))
+        ? (RegExp(RegExp(`\\.(${config.test.join('|')})$`)))
         : /\.(js|vue)$/
     }
 
@@ -65,7 +65,7 @@ class Eslint {
     this.config = config
   }
 
-  webpackRules () {
+  webpackRules() {
     return this.config
   }
 }
